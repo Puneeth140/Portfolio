@@ -30,7 +30,7 @@ const Contact = () => {
         <div className={styles.contactItem}>
           <span className={styles.label}>[VOICE_COMM_ID]:</span>
           <a href="tel:+917019955234" className={styles.phoneLink}>
-            +91 XXX XXX XXXX
+            +91 7019955234
           </a>
           </div>
         </div>
