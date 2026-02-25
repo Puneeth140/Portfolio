@@ -5,7 +5,7 @@ const Contact = () => {
   return (
     <section id="contact" className={styles.container}>
       <h2 className={styles.sectionTitle}>[ESTABLISH_CONNECTION]</h2>
-      
+
       <div className={styles.contactWrapper}>
         <div className={styles.statusBox}>
           <div className={styles.statusIndicator}>
@@ -27,6 +27,12 @@ const Contact = () => {
             <span className={styles.label}>GITHUB:</span>
             <span className={styles.value}>@puneeth-dev</span>
           </a>
+        <div className={styles.contactItem}>
+          <span className={styles.label}>[VOICE_COMM_ID]:</span>
+          <a href="tel:+917019955234" className={styles.phoneLink}>
+            +91 XXX XXX XXXX
+          </a>
+          </div>
         </div>
       </div>
     </section>

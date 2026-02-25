@@ -72,3 +72,16 @@
 @keyframes blink {
   50% { opacity: 0.3; }
 }
+
+.phoneLink {
+  color: #00ff41;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
+    color: #fff;
+  }
+}
