@@ -1,0 +1,88 @@
+.container {
+  padding: 4rem 0;
+}
+
+.terminal {
+  background: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #333;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+  .header {
+    background: #333;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    p { margin: 0 auto 0 10px; font-size: 0.8rem; color: #aaa; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; background: #ff5f56; }
+    .dot:nth-child(2) { background: #ffbd2e; }
+    .dot:nth-child(3) { background: #27c93f; }
+  }
+
+  .body {
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+
+    .prompt { color: #00ff41; font-weight: bold; }
+    .response { color: #e0e0e0; margin-bottom: 1.5rem; }
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background: #00ff41;
+      animation: blink 1s infinite;
+    }
+  }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.lineEntry {
+  margin-bottom: 0.8rem;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  color: #e0e0e0;
+  animation: fadeIn 0.3s ease-in forwards; // Smooth fade-in for each line
+}
+
+.prompt {
+  color: #00ff41;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.2rem;
+  background: #00ff41;
+  margin-left: 5px;
+  vertical-align: middle;
+  animation: blink 1s infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+// Ensure the terminal has a fixed minimum height so it doesn't 
+// "jump" in size as lines appear
+.body {
+  padding: 20px;
+  min-height: 300px; 
+}

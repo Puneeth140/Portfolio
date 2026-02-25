@@ -1,0 +1,27 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  background: rgba(0, 255, 65, 0.05);
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  color: #e0e0e0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  cursor: default;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(0, 255, 65, 0.15);
+    border-color: #00ff41;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+    transform: translateY(-3px);
+    color: #fff;
+  }
+
+  .bracket {
+    color: #00ff41;
+    font-weight: bold;
+    margin: 0 5px;
+  }
+}

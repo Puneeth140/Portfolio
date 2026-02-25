@@ -1,0 +1,68 @@
+.scrollArea {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  transform: translateY(20px);
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.button {
+  background: rgba(5, 5, 5, 0.8);
+  border: 1px solid #00ff41;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px; // Sharp tech look
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #00ff41;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.6);
+    
+    .arrow {
+      border-bottom-color: #050505; // Invert color on hover
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid #00ff41; // The arrow itself
+  transition: all 0.3s ease;
+}
+
+// Subtle glitch effect layer
+.glitchLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 65, 0.05) 0px,
+    rgba(0, 255, 65, 0.05) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+}

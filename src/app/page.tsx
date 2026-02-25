@@ -1,66 +1,79 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import About from './components/About';
+import ProjectCard from './components/ProjectCard';
+import SkillBadge from './components/SkillBadge';
+import Contact from './components/Contact';
+import { projects } from './data/projects';
+import { skills } from './data/skills';
+import styles from './page.module.scss';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <main className={styles.container}>
+      {/* Hero Section */}
+      <div id="home" />
+      <header className={styles.hero}>
+        <div className={styles.heroContent}>
+          {/* Profile Image Section */}
+          <div className={styles.imageWrapper}>
+            <img
+              src="/assets/me1.jpg" // Put your photo in public/images/
+              alt="Puneeth Profile"
+              className={styles.profileImg}
             />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className={styles.imgOverlay}></div>
+          </div>
+
+          {/* Intro Text Section */}
+          <div className={styles.introText}>
+            <h1 className={styles.glitch} data-text="PUNEETH_v1.0">PUNEETH_v1.0</h1>
+            <p className={styles.tagline}>SYSTEMS_ARCHITECT //</p>
+            <p className={styles.description}>
+              Master's student passionate about building <span>autonomous AI agents </span>
+              and <span>Computer Vision</span> tools. When I'm not debugging Python,
+              you'll find me on the basketball court.
+            </p>
+            <div className={styles.ctaButtons}>
+              <a href="#projects" className={styles.primaryBtn}>VIEW_WORKS</a>
+              <a href="#contact" className={styles.secondaryBtn}>CONNECT</a>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </header>
+
+      {/* About Section (The Terminal) */}
+      <section id="about"><About /></section>
+
+      {/* Skills Section */}
+      <section id="skills" className={styles.section}>
+        <h2 className={styles.sectionTitle}>[TECH_STACK]</h2>
+        <div className={styles.skillsGrid}>
+          {skills.map((skill, index) => (
+            <SkillBadge key={index} name={skill.name} />
+          ))}
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className={styles.projectSection}>
+        <h2 className={styles.sectionTitle}>[PROJECT_RECORDS]</h2>
+        <div className={styles.grid}>
+          {projects.map((proj) => (
+            <ProjectCard
+              key={proj.id}
+              title={proj.title}
+              description={proj.description}
+              image={proj.image}
+              tech={proj.tech}
+              GithubLink={proj.GithubLink}
+              DemoLink={proj.DemoLink}
+            />
+          ))}
+        </div>
+      </section>
+      <section id="contact"><Contact /></section>
+      <footer className={styles.footer}>
+        <p>© 2026 PUNEETH_SYS_v1.0 - ALL_RIGHTS_RESERVED</p>
+      </footer>
+    </main>
   );
 }

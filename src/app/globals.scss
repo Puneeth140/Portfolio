@@ -1,0 +1,64 @@
+$bg-color: #050505; // Deep black
+$accent-color: #00ff41; // Matrix/Cyberpunk Green
+$text-color: #e0e0e0;
+:root {
+  --primary-font: var(--font-mono);
+  --heading-font: var(--font-orbitron);
+}
+
+body {
+  font-family: var(--primary-font), monospace;
+  background-color: #050505;
+  color: #e0e0e0;
+}
+
+h1, h2, h3, .logo {
+  font-family: var(--heading-font), sans-serif;
+  letter-spacing: 2px;
+}
+
+main {
+  position: relative;
+  z-index: 1; // Content stays above the canvas
+}
+
+section {
+  background: rgba(5, 5, 5, 0.4); // Semi-transparent
+  backdrop-filter: blur(2px); // Subtle blur to keep text readable
+  margin: 2rem 0;
+  border-radius: 8px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #00ff41;
+  border-radius: 10px;
+}
+
+
+@keyframes pulse {
+  0% { opacity: 0.1; }
+  50% { opacity: 0.15; }
+  100% { opacity: 0.1; }
+}
+
+// Apply a very faint pulse to all cards
+.card {
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(transparent, rgba(0, 255, 65, 0.02));
+    animation: pulse 4s infinite;
+    pointer-events: none;
+  }
+}

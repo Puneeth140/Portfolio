@@ -1,0 +1,191 @@
+.navbar {
+  position: fixed;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 950px;
+  z-index: 10000;
+  pointer-events: auto !important;
+  cursor: pointer;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2.5rem;
+
+  // 1. The Glass Base
+  background: rgba(5, 5, 5, 0.75);
+  backdrop-filter: blur(15px) saturate(180%);
+  
+  // 2. The Multi-Layer Border
+  border: 1px solid rgba(0, 255, 65, 0.4);
+  border-radius: 12px; // Slightly rounded but techy
+
+  // 3. The Shadow & Glow (The "Depth" secret)
+  box-shadow: 
+    0 15px 35px -5px rgba(0, 0, 0, 0.9),         // Deep drop shadow
+    0 10px 20px -10px rgba(0, 255, 65, 0.3);         // Subtle outer neon bloom
+   
+  clip-path: (-100px -100px 0px -100px);
+  transition: all 0.5s ease;
+
+  &::before {
+    // Subtle scanline overlay inside the navbar
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%, 
+      rgba(0, 255, 65, 0.03) 50%
+    );
+    background-size: 100% 4px;
+    z-index: -1;
+    pointer-events: auto;
+  }
+
+  &:hover {
+    border-color: #00ff41;
+    box-shadow: 
+      0 15px 40px rgba(0, 0, 0, 0.9), 
+      0 0 30px rgba(0, 255, 65, 0.3),
+      inset 0 0 15px rgba(0, 255, 65, 0.2);
+    transform: translateX(-50%) translateY(-2px);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #00ff41;
+    border-radius: 12px; // Match your navbar radius
+    box-shadow: none;
+    animation: wakeShadow 1s ease 1.5s forwards;
+    pointer-events: none;
+    
+    // The "Drawing" Logic
+    animation: drawBorder 2s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+    clip-path: inset(0 100% 0 0); // Start hidden on the right
+  }
+}
+
+@keyframes wakeShadow {
+  from {
+    box-shadow: none;
+  }
+  to {
+    box-shadow: 
+      0 15px 35px -5px rgba(0, 0, 0, 0.9),
+      0 10px 20px -10px rgba(0, 255, 65, 0.3);
+  }
+}
+
+@keyframes drawBorder {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0); // Reveal fully
+  }
+}
+
+.logo {
+  font-family: var(--heading-font);
+  font-weight: 900;
+  font-size: 1.4rem;
+  
+  a {
+    color: #00ff41;
+    text-decoration: none;
+    letter-spacing: 2px;
+    position: relative;
+    
+    // Applying the flicker
+    animation: neonFlicker 3s infinite alternate;
+  }
+}
+
+@keyframes neonFlicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 
+      0 0 7px #00ff41,
+      0 0 10px #00ff41,
+      0 0 21px #00ff41;
+    opacity: 1;
+  }
+  20%, 22%, 24%, 55% {
+    text-shadow: none;
+    opacity: 0.4; // The "flicker" state
+  }
+}
+
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem; // Space between About and Projects
+
+  li a {
+    color: #ffffff; // Change from #888 to pure white for visibility
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    opacity: 0.8; // Slightly dim so the logo stands out more
+
+    &:hover {
+      opacity: 1;
+      color: #00ff41;
+      text-shadow: 0 0 8px #00ff41;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+.socialIcons {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  border-left: 1px solid rgba(0, 255, 65, 0.3);
+  padding-left: 1.2rem;
+
+  a {
+    color: #888;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      color: #00ff41;
+      filter: drop-shadow(0 0 8px #00ff41);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Adjust the rightSection to handle the new icons
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: 10;
+}
+
+@media (max-width: 600px) {
+  .navLinks, .socialIcons {
+    display: none; // Hide links/icons on very small screens to keep the Clock & Logo
+  }
+  .navbar {
+    width: 95%;
+    padding: 0.8rem 1.2rem;
+  }
+}
